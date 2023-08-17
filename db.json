@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "content": "It's a me, Mario!",
+      "author": "Mario",
+      "category": "Food",
+      "createdDate": "01/03/2020",
+      "reactionsCount": 200000
+    },
+    {
+      "id": 2,
+      "content": "Oh nooooooooooooooooooooooooooooooo!",
+      "author": "Luigi",
+      "category": "Food",
+      "createdDate": "01/30/2020",
+      "reactionsCount": 38400
+    },
+    {
+      "id": 3,
+      "content": "Save me, Mario!",
+      "author": "Peach",
+      "category": "Story",
+      "createdDate": "01/20/2020",
+      "reactionsCount": 300000
+    },
+    {
+      "id": 4,
+      "content": "You'll never be able to save her Mario",
+      "author": "Bowser",
+      "category": "Story",
+      "createdDate": "01/21/2020",
+      "reactionsCount": 20000
+    },
+    {
+      "id": 5,
+      "content": "I'm coming princess Peach!",
+      "author": "Mario",
+      "category": "Food",
+      "createdDate": "01/22/2020",
+      "reactionsCount": 10000
+    },
+    {
+      "id": 6,
+      "content": "Come join me in my mansion in cooking this newest dish",
+      "author": "Luigi",
+      "category": "Food",
+      "createdDate": "02/03/2019",
+      "reactionsCount": 300
+    }
+  ]
+}
