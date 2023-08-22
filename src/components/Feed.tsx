@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import Axios from 'axios';
 import { CircularProgress, Flex } from '@chakra-ui/react';
-import FeedCard from '../components/FeedCard';
+import FeedCard from './FeedCard';
 
 export default function Feed() {
   const { data: feedData, isLoading } = useQuery(['feed'], () => {

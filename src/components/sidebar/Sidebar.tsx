@@ -14,7 +14,7 @@ import {
 import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
-import MobileSide from './MobileSide';
+import MobileSidebar from './MobileSidebar';
 
 interface LinkItemProps {
   name: string;
@@ -47,7 +47,7 @@ export default function Sidebar() {
         </DrawerContent>
       </Drawer>
 
-      <MobileSide display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+      <MobileSidebar display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
     </Box>
   );
 }

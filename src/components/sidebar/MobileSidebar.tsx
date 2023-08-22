@@ -5,7 +5,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 
-export default function MobileSide({ onOpen, ...rest }: MobileProps) {
+export default function MobileSidebar({ onOpen, ...rest }: MobileProps) {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}

@@ -1,5 +1,14 @@
 // import Image from 'next/image';
-import { Image, Box, Center, Heading, Text, Stack, Avatar, useColorModeValue } from '@chakra-ui/react';
+import {
+  Image,
+  Box,
+  Center,
+  Heading,
+  Text,
+  Stack,
+  Avatar,
+  useColorModeValue,
+} from '@chakra-ui/react';
 
 export default function FeedCard() {
   return (

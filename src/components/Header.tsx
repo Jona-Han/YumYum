@@ -15,6 +15,11 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useAuth0 } from '@auth0/auth0-react';
+
+import LoginButton from './buttons/LoginButton';
+import SignupButton from './buttons/SignupButton';
+import LogoutButton from './buttons/LogoutButton';
 
 // interface Props {
 //   children: React.ReactNode
@@ -39,8 +44,9 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 //   )
 // }
 
-export default function Headerbar() {
+export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { isAuthenticated } = useAuth0();
   //   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
@@ -53,7 +59,19 @@ export default function Headerbar() {
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
 
-              <Menu>
+              {!isAuthenticated && (
+                <>
+                  <SignupButton />
+                  <LoginButton />
+                </>
+              )}
+              {isAuthenticated && (
+                <>
+                  <LogoutButton />
+                </>
+              )}
+
+              {/* <Menu>
                 <MenuButton
                   as={Button}
                   rounded={'full'}
@@ -81,7 +99,7 @@ export default function Headerbar() {
                   <MenuItem>Account Settings</MenuItem>
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
-              </Menu>
+              </Menu> */}
             </Stack>
           </Flex>
         </Flex>
