@@ -1,8 +1,8 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
-import Sidebar from '../components/sidebar/sidebar';
-import Header from '../components/header';
-import Footer from '../components/footer';
+import Sidebar from '../components/sidebar/Sidebar';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // interface LayoutProps {
 //   children: React.ReactNode;
