@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import Axios from 'axios';
-import { CircularProgress, Flex } from '@chakra-ui/react';
+import { Center, CircularProgress, Flex } from '@chakra-ui/react';
 import FeedCard from './FeedCard';
 
 export default function Feed() {
@@ -9,7 +9,7 @@ export default function Feed() {
   });
 
   if (isLoading) {
-    return <CircularProgress isIndeterminate color="green.300" />;
+    return <Center w='100%' h='80vh'><CircularProgress isIndeterminate color="green.300" /></Center>;
   }
 
   return (

@@ -10,6 +10,7 @@ function fetchUser(getAccessTokenSilently: {
   ): Promise<GetTokenSilentlyVerboseResponse>;
   (options?: GetTokenSilentlyOptions | undefined): Promise<string>;
   (options: GetTokenSilentlyOptions): Promise<string | GetTokenSilentlyVerboseResponse>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (): any;
 }) {
   return async () => {
@@ -17,7 +18,7 @@ function fetchUser(getAccessTokenSilently: {
     const response = await getUser(accessToken);
 
     if (!response.data) {
-      throw new Error(response.error);
+      throw new Error(response.error?.message);
     }
 
     return response.data;
