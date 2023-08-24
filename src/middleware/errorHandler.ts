@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 import {
   InvalidTokenError,
   UnauthorizedError,
   InsufficientScopeError,
-} from "express-oauth2-jwt-bearer";
+} from 'express-oauth2-jwt-bearer';
 
 export const errorHandler = (
   error: any,
@@ -12,7 +12,7 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   if (error instanceof InsufficientScopeError) {
-    const message = "Permission denied";
+    const message = 'Permission denied';
 
     response.status(error.status).json({ message });
 
@@ -20,7 +20,7 @@ export const errorHandler = (
   }
 
   if (error instanceof InvalidTokenError) {
-    const message = "Bad credentials";
+    const message = 'Bad credentials';
 
     response.status(error.status).json({ message });
 
@@ -28,7 +28,7 @@ export const errorHandler = (
   }
 
   if (error instanceof UnauthorizedError) {
-    const message = "Requires authentication";
+    const message = 'Requires authentication';
 
     response.status(error.status).json({ message });
 
@@ -36,7 +36,7 @@ export const errorHandler = (
   }
 
   const status = 500;
-  const message = "Internal Server Error";
+  const message = 'Internal Server Error';
 
   response.status(status).json({ message });
 };

@@ -1,10 +1,6 @@
-import * as dotenv from "dotenv";
-import { NextFunction, Request, Response } from "express";
-import {
-  auth,
-  claimCheck,
-  InsufficientScopeError,
-} from "express-oauth2-jwt-bearer";
+import * as dotenv from 'dotenv';
+import { NextFunction, Request, Response } from 'express';
+import { auth, claimCheck, InsufficientScopeError } from 'express-oauth2-jwt-bearer';
 
 dotenv.config();
 
