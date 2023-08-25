@@ -1,16 +1,9 @@
 import express from 'express';
-import * as userService from '../services/userService'; // Assuming userService exports multiple methods
+import * as userService from '../services/userService';
 import { validateAccessToken } from '../middleware/auth0';
+import { getIDFromToken } from '../utils/getIDFromToken';
 
 const userRouter = express.Router();
-
-const getIDFromToken = (req: express.Request) => {
-  const userID = req?.auth?.payload?.sub;
-  if (!userID) {
-    throw new Error('userID is undefined from access token');
-  }
-  return userID;
-};
 
 userRouter.get('/', validateAccessToken, async (req: express.Request, res: express.Response) => {
   try {
