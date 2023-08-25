@@ -68,4 +68,17 @@ postRouter.delete(
   }
 );
 
+postRouter.put(
+  '/:postID',
+  validateAccessToken,
+  async (req: express.Request, res: express.Response) => {
+    try {
+      await postService.updatePost(Number(req.params.postID), req.body);
+      res.send('Post updated');
+    } catch (error: any) {
+      res.status(500).send(error.message);
+    }
+  }
+);
+
 export default postRouter;

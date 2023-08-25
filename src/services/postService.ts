@@ -37,7 +37,7 @@ export const deletePost = async (postID: Number) => {
 
 export const updatePost = async (postID: Number, post: Post) => {
   const result = await pool.query(
-    'UPDATE USERS SET content=$1, category=$2 WHERE id=$3 RETURNING *',
+    'UPDATE POSTS SET content=$1, category=$2 WHERE id=$3 RETURNING *',
     [post.content, post.category, postID]
   );
   if (result.rows.length === 0) {
