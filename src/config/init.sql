@@ -21,22 +21,22 @@ DROP TABLE USERS;
 
 CREATE TABLE USERS (
     id VARCHAR(40) PRIMARY KEY,
-    given_Name VARCHAR(50) NOT NULL,
-    family_Name VARCHAR(50) NOT NULL,
+    given_name VARCHAR(50) NOT NULL,
+    family_name VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    number_Of_Posts INT DEFAULT 0,
-    number_Of_Followers INT DEFAULT 0,
-    number_Following INT DEFAULT 0
+    number_of_posts INT DEFAULT 0,
+    number_of_followers INT DEFAULT 0,
+    number_following INT DEFAULT 0
 );
 
 CREATE TABLE RECIPES (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(64),
-    prep_Time INT,
-    cook_Time INT,
+    prep_time INT,
+    cook_time INT,
     servings INT,
     rating REAL,
-    num_Of_Reviews INT DEFAULT 0,
+    num_of_reviews INT DEFAULT 0,
     calories INT,
     fat INT,
     protein INT,
@@ -53,8 +53,8 @@ CREATE TABLE POSTS (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     content VARCHAR(4096),
     category INT,
-    date_Created DATE DEFAULT CURRENT_DATE,
-    num_Of_Reactions INT DEFAULT 0,
+    date_created DATE DEFAULT CURRENT_DATE,
+    num_of_reactions INT DEFAULT 0,
     user_ID VARCHAR(40) NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES USERS (id)
 );
@@ -78,7 +78,7 @@ CREATE TABLE REVIEWS (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     content VARCHAR(4096),
     rating REAL,
-    date_Created DATE DEFAULT CURRENT_DATE,
+    date_created DATE DEFAULT CURRENT_DATE,
     user_ID VARCHAR(40),
     recipe_ID INT,
     FOREIGN KEY (user_ID) REFERENCES USERS (id),

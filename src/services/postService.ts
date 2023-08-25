@@ -39,4 +39,24 @@ export const deletePost = async (postID: Number) => {
   return result.rows[0];
 };
 
-export const updatePost = async (postID: Number, )
+export const updatePost = async (postID: Number, post: Post) => {
+    const result = await pool.query(
+        'UPDATE USERS SET content=$1, category=$2 WHERE id=$3 RETURNING *',
+        [post.content, post.category, postID]
+      );
+      if (result.rows.length === 0) {
+        throw new Error('Post not found');
+      }
+      return result.rows[0];
+}
+
+export const updateReactionCounter = async (postID: Number, newCount: Number) => {
+    const result = await pool.query(
+        'UPDATE USERS SET num_of_reactions=$1 WHERE id=$2 RETURNING *',
+        [newCount, postID]
+      );
+      if (result.rows.length === 0) {
+        throw new Error('Post not found');
+      }
+      return result.rows[0];
+}
