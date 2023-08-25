@@ -32,11 +32,7 @@ export const createPost = async (userID: String, post: Post) => {
 };
 
 export const deletePost = async (postID: Number) => {
-  const result = await pool.query('DELETE FROM POSTS WHERE id = $1', [postID]);
-  if (result.rows.length === 0) {
-    throw new Error('Post not found');
-  }
-  return result.rows[0];
+  await pool.query('DELETE FROM POSTS WHERE id = $1', [postID]);
 };
 
 export const updatePost = async (postID: Number, post: Post) => {

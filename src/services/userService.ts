@@ -9,16 +9,15 @@ export const getUserById = async (id: String | undefined) => {
 };
 
 interface User {
-  id: string;
   given_name: string;
   family_name: string;
   email: string;
 }
 
-export const createUser = async (user: User) => {
+export const createUser = async (userID: String, user: User) => {
   const result = await pool.query(
     'INSERT INTO USERS (id, given_name, family_name, email) VALUES ($1, $2, $3, $4) RETURNING *',
-    [user.id, user.given_name, user.family_name, user.email]
+    [userID, user.given_name, user.family_name, user.email]
   );
   return result.rows[0];
 };
