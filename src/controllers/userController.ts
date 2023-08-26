@@ -19,10 +19,9 @@ userRouter.get('/', validateAccessToken, async (req: express.Request, res: expre
   }
 });
 
-userRouter.post('/', validateAccessToken, async (req: express.Request, res: express.Response) => {
+userRouter.post('/', async (req: express.Request, res: express.Response) => {
   try {
-    const userId = getIDFromToken(req);
-    const user = await userService.createUser(userId, req.body);
+    const user = await userService.createUser(req.body);
     res.status(201).json(user);
   } catch (error: any) {
     res.status(500).send(error.message);

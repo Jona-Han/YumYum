@@ -24,6 +24,7 @@ CREATE TABLE USERS (
     given_name VARCHAR(50) NOT NULL,
     family_name VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
+    profile_name VARCHAR(20) UNIQUE,
     number_of_posts INT DEFAULT 0,
     number_of_followers INT DEFAULT 0,
     number_following INT DEFAULT 0
