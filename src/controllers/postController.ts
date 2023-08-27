@@ -1,7 +1,7 @@
 import express from 'express';
 import * as postService from '../services/postService';
 import { validateAccessToken } from '../middleware/auth0';
-import { getIDFromToken } from '../utils/getIDFromToken';
+import { getIDFromToken } from '../utils/getUserInfo';
 
 const postRouter = express.Router();
 

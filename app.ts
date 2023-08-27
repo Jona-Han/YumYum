@@ -5,6 +5,7 @@ import { notFoundHandler } from './src/middleware/notFoundHandler';
 import cors from 'cors';
 import postRouter from './src/controllers/postController';
 import userRouter from './src/controllers/userController';
+import postLoginRouter from './src/controllers/postLoginController';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use('/user', userRouter);
 app.use('/post', postRouter);
+app.use('/postLogin', postLoginRouter)
 
 app.use(errorHandler);
 app.use(notFoundHandler);

@@ -1,4 +1,6 @@
 import pool from '../utils/connectDB';
+import { getIDFromToken } from '../utils/getUserInfo';
+import express from 'express';
 
 export const getUserById = async (id: String | undefined) => {
   const result = await pool.query('SELECT * FROM USERS WHERE id = $1', [id]);
@@ -9,16 +11,15 @@ export const getUserById = async (id: String | undefined) => {
 };
 
 interface User {
-  user_id: string;
-  given_name: string;
-  family_name: string;
-  email: string;
+  givenName: String;
+  familyName: String;
+  email: String;
 }
 
-export const createUser = async (user: User) => {
+export const createUser = async (userID: String, user: User) => {
   const result = await pool.query(
     'INSERT INTO USERS (id, given_name, family_name, email) VALUES ($1, $2, $3, $4) RETURNING *',
-    [user.user_id, user.given_name, user.family_name, user.email]
+    [userID, user.givenName, user.familyName, user.email]
   );
   return result.rows[0];
 };
@@ -26,7 +27,7 @@ export const createUser = async (user: User) => {
 export const updateUser = async (id: String | undefined, user: User) => {
   const result = await pool.query(
     'UPDATE USERS SET given_name=$1, family_name=$2, email=$3 WHERE id=$4 RETURNING *',
-    [user.given_name, user.family_name, user.email, id]
+    [user.givenName, user.familyName, user.email, id]
   );
   if (result.rows.length === 0) {
     throw new Error('User not found');
