@@ -1,6 +1,5 @@
 import pool from '../utils/connectDB';
-import { getIDFromToken } from '../utils/getUserInfo';
-import express from 'express';
+import User from '../models/User';
 
 export const getUserById = async (id: String | undefined) => {
   const result = await pool.query('SELECT * FROM USERS WHERE id = $1', [id]);
@@ -9,12 +8,6 @@ export const getUserById = async (id: String | undefined) => {
   }
   return result.rows[0];
 };
-
-interface User {
-  givenName: String;
-  familyName: String;
-  email: String;
-}
 
 export const createUser = async (userID: String, user: User) => {
   const result = await pool.query(
