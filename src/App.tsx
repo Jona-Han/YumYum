@@ -7,8 +7,7 @@ import {
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Form from './pages/Form';
 import FeedLayout from './layouts/FeedLayout';
-import Feed from './components/feed';
-import CallbackPage from './pages/Callback';
+import Feed from './components/Feed';
 import Auth0ProviderLayout from './layouts/Auth0ProviderLayout';
 import Profile from './pages/Profile';
 import AuthenticationGuard from './components/AuthenticationGuard';
@@ -31,9 +30,9 @@ function App() {
           <Route index element={<Feed />} />
         </Route>
         <Route path="/form" element={<Form />} />
-        <Route path="/callback" element={<FeedLayout />}>
+        {/* <Route path="/callback" element={<FeedLayout />}>
           <Route element={<CallbackPage />} />
-        </Route>
+        </Route> */}
         <Route path="/profile" element={<AuthenticationGuard component={Profile} />} />
         {/* <Route path="/protected" element={<ProtectedPage />} /> */}
         {/* <Route path="/admin" element={<AdminPage />} /> */}

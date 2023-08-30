@@ -9,7 +9,11 @@ export default function Feed() {
   });
 
   if (isLoading) {
-    return <Center w='100%' h='80vh'><CircularProgress isIndeterminate color="green.300" /></Center>;
+    return (
+      <Center w="100%" h="80vh">
+        <CircularProgress isIndeterminate color="green.300" />
+      </Center>
+    );
   }
 
   return (

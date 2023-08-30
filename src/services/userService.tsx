@@ -4,7 +4,7 @@ const apiServerUrl = import.meta.env.VITE_API_SERVER_URL;
 
 export default async function getUser(accessToken: string) {
   const config = {
-    url: `${apiServerUrl}/users`,
+    url: `${apiServerUrl}/user`,
     method: 'GET',
     headers: {
       'content-type': 'application/json',
