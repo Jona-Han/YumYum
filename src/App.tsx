@@ -7,7 +7,7 @@ import {
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Form from './pages/Form';
 import FeedLayout from './layouts/FeedLayout';
-import Feed from './components/Feed';
+import Feed from './components/feed/Feed';
 import Auth0ProviderLayout from './layouts/Auth0ProviderLayout';
 import Profile from './pages/Profile';
 import AuthenticationGuard from './components/AuthenticationGuard';
