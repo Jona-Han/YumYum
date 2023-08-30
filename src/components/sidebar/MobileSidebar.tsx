@@ -9,7 +9,7 @@ import {
 import { FiMenu } from 'react-icons/fi';
 
 import LoginButton from '../buttons/LoginButton';
-import LogoutButton from '../buttons/LogoutButton';
+import AvatarButton from '../buttons/AvatarButton';
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
@@ -34,7 +34,7 @@ export default function MobileSidebar({ onOpen, ...rest }: MobileProps) {
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
         YumYum
       </Text>
-      {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+      {isAuthenticated ? <AvatarButton /> : <LoginButton />}
     </Flex>
   );
 }
