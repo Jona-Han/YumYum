@@ -1,11 +1,22 @@
-import { Flex, IconButton, useColorModeValue, FlexProps, Text } from '@chakra-ui/react';
+import { useAuth0 } from '@auth0/auth0-react';
+import {
+  Flex,
+  IconButton,
+  useColorModeValue,
+  FlexProps,
+  Text,
+} from '@chakra-ui/react';
 import { FiMenu } from 'react-icons/fi';
+
+import LoginButton from '../buttons/LoginButton';
+import LogoutButton from '../buttons/LogoutButton';
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 
 export default function MobileSidebar({ onOpen, ...rest }: MobileProps) {
+  const { isAuthenticated } = useAuth0();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -15,7 +26,7 @@ export default function MobileSidebar({ onOpen, ...rest }: MobileProps) {
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent="flex-start"
+      justifyContent="space-between"
       {...rest}
     >
       <IconButton variant="outline" onClick={onOpen} aria-label="open menu" icon={<FiMenu />} />
@@ -23,6 +34,7 @@ export default function MobileSidebar({ onOpen, ...rest }: MobileProps) {
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
         YumYum
       </Text>
+      {isAuthenticated ? <LogoutButton /> : <LoginButton />}
     </Flex>
   );
 }

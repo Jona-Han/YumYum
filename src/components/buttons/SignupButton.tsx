@@ -19,10 +19,15 @@ export default function SignupButton() {
     <div>
       <Button
         as={'a'}
+        display={'inline-flex'}
         fontSize={'sm'}
-        fontWeight={400}
-        variant={'link'}
+        fontWeight={600}
+        color={'white'}
+        bg={'pink.400'}
         href={'#'}
+        _hover={{
+          bg: 'pink.300',
+        }}
         onClick={handleSignUp}
       >
         Sign Up

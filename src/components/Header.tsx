@@ -51,7 +51,11 @@ export default function Header() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} display={{base: 'none', md:'block'}}>
+      <Box
+        bg={useColorModeValue('gray.100', 'gray.900')}
+        px={4}
+        display={{ base: 'none', md: 'block' }}
+      >
         <Flex h={16} alignItems={'center'} justifyContent={'flex-end'}>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
