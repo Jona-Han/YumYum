@@ -17,7 +17,6 @@ export default function Feed() {
         if (!response.data) {
             throw new Error(response.error?.message);
         }
-        console.log(response);
         return response.data;
     };
   }
