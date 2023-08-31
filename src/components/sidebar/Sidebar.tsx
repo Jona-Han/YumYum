@@ -19,14 +19,15 @@ import MobileSidebar from './MobileSidebar';
 interface LinkItemProps {
   name: string;
   icon: IconType;
+  link: string;
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Home', icon: FiHome, link: '/' },
+  { name: 'Trending', icon: FiTrendingUp, link: '/trending' },
+  { name: 'Explore', icon: FiCompass, link: '/explore' },
+  { name: 'Favorites', icon: FiStar, link: '/favorites' },
+  { name: 'Settings', icon: FiSettings, link: '/settings' },
 ];
 
 export default function Sidebar() {
@@ -74,7 +75,7 @@ function SidebarContent({ onClose, ...rest }: SidebarProps) {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} link={link.link}>
           {link.name}
         </NavItem>
       ))}
@@ -85,11 +86,12 @@ function SidebarContent({ onClose, ...rest }: SidebarProps) {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  link: string;
 }
 
-function NavItem({ icon, children, ...rest }: NavItemProps) {
+function NavItem({ icon, children, link, ...rest }: NavItemProps) {
   return (
-    <Box as="a" href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Box as="a" href={link} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
         p="4"
