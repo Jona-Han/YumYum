@@ -53,9 +53,9 @@ export default function FeedCard() {
           </Text>
         </Stack>
 
-        <HStack mt={3} display='flex' justifyContent='space-evenly'>
-            <LikeButton />
-            <Button padding='24px 150px'>See Recipe</Button>
+        <HStack mt={3} display="flex" justifyContent="space-evenly">
+          <LikeButton />
+          <Button padding="24px 150px">See Recipe</Button>
         </HStack>
       </Box>
     </Center>

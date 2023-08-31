@@ -11,6 +11,7 @@ import Feed from './components/feed/Feed';
 import Auth0ProviderLayout from './layouts/Auth0ProviderLayout';
 import Profile from './pages/Profile';
 import AuthenticationGuard from './components/AuthenticationGuard';
+import Error from './pages/Error';
 
 function App() {
   const queryClient = new QueryClient({
@@ -25,7 +26,7 @@ function App() {
     createRoutesFromElements(
       <Route element={<Auth0ProviderLayout />}>
         {/* <Route index element={<h1>Check for login</h1>} /> */}
-        <Route path="*" element={<div> 404 Not Found </div>} />
+        <Route path="*" element={<Error />} />
         <Route element={<FeedLayout />}>
           <Route index element={<Feed />} />
         </Route>
