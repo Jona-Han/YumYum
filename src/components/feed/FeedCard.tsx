@@ -9,6 +9,7 @@ import {
   useColorModeValue,
   Button,
   HStack,
+  AspectRatio,
 } from '@chakra-ui/react';
 import LikeButton from '../buttons/LikeButton';
 
@@ -21,7 +22,7 @@ export default function FeedCard() {
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'2xl'}
         rounded={'md'}
-        p={3}
+        p={4}
         overflow={'hidden'}
       >
         <Stack direction={'row'} ml={1} mb={3} spacing={4} align={'center'}>
@@ -32,14 +33,14 @@ export default function FeedCard() {
           </Stack>
         </Stack>
 
-        <Box h={'400px'} bg={'gray.100'} mx={-4} mb={4} pos={'relative'}>
+        <AspectRatio maxW={'500px'} ratio={4 / 3} bg={'gray.100'} mx={-4} mb={4}>
           <Image
             src={
               'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
             }
             alt="Example"
           />
-        </Box>
+        </AspectRatio>
         <Stack>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
