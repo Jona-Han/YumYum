@@ -30,10 +30,10 @@ const LinkItems: Array<LinkItemProps> = [
 ];
 
 interface NavItemProps extends FlexProps {
-    icon: IconType;
-    children: any;
-    link: string;
-  }
+  icon: IconType;
+  children: any;
+  link: string;
+}
 
 export default function Sidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
