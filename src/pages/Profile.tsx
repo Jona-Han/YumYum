@@ -1,33 +1,24 @@
-import { GetTokenSilentlyOptions, useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery } from 'react-query';
 import PageLoader from '../components/PageLoader';
-import { GetTokenSilentlyVerboseResponse } from '@auth0/auth0-spa-js';
 import getUser from '../services/userService';
-
-function fetchUser(getAccessTokenSilently: {
-  (
-    options: GetTokenSilentlyOptions & { detailedResponse: true }
-  ): Promise<GetTokenSilentlyVerboseResponse>;
-  (options?: GetTokenSilentlyOptions | undefined): Promise<string>;
-  (options: GetTokenSilentlyOptions): Promise<string | GetTokenSilentlyVerboseResponse>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (): any;
-}) {
-  return async () => {
-    const accessToken = await getAccessTokenSilently();
-    const response = await getUser(accessToken);
-
-    if (!response.data) {
-      throw new Error(response.error?.message);
-    }
-
-    return response.data;
-  };
-}
 
 export default function Profile() {
   const { user, getAccessTokenSilently } = useAuth0();
   const { data, isError, isLoading } = useQuery('userProfile', fetchUser(getAccessTokenSilently));
+
+  function fetchUser(getAccessTokenSilently: any) {
+    return async () => {
+      const accessToken = await getAccessTokenSilently();
+      const response = await getUser(accessToken);
+  
+      if (!response.data) {
+        throw new Error(response.error?.message);
+      }
+  
+      return response.data;
+    };
+  }
 
   if (!user) {
     return <div>User null error</div>;

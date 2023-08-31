@@ -1,12 +1,26 @@
 import { useQuery } from 'react-query';
-import Axios from 'axios';
 import { Center, CircularProgress, Flex } from '@chakra-ui/react';
 import FeedCard from './FeedCard';
+import { useAuth0 } from '@auth0/auth0-react';
+import getFeed from '../../services/feedService';
+
 
 export default function Feed() {
-  const { data: feedData, isLoading } = useQuery(['feed'], () => {
-    return Axios.get('http://localhost:3000/posts').then((res) => res.data);
-  });
+  const { getAccessTokenSilently } = useAuth0();
+  const { data: feedData, isLoading } = useQuery(['feed'], fetchPost(getAccessTokenSilently));
+
+  function fetchPost(getAccessTokenSilently: any) {
+    return async () => {
+        const accessToken = await getAccessTokenSilently();
+        const response = await getFeed(accessToken);
+
+        if (!response.data) {
+            throw new Error(response.error?.message);
+        }
+        console.log(response);
+        return response.data;
+    };
+  }
 
   if (isLoading) {
     return (
