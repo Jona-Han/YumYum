@@ -13,7 +13,6 @@ import {
 } from '@chakra-ui/react';
 import { FiHome, FiTrendingUp, FiCompass, FiStar, FiSettings } from 'react-icons/fi';
 import { IconType } from 'react-icons';
-import { ReactText } from 'react';
 import MobileSidebar from './MobileSidebar';
 
 interface LinkItemProps {
@@ -29,6 +28,12 @@ const LinkItems: Array<LinkItemProps> = [
   { name: 'Favorites', icon: FiStar, link: '/favorites' },
   { name: 'Settings', icon: FiSettings, link: '/settings' },
 ];
+
+interface NavItemProps extends FlexProps {
+    icon: IconType;
+    children: any;
+    link: string;
+  }
 
 export default function Sidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -81,12 +86,6 @@ function SidebarContent({ onClose, ...rest }: SidebarProps) {
       ))}
     </Box>
   );
-}
-
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  children: ReactText;
-  link: string;
 }
 
 function NavItem({ icon, children, link, ...rest }: NavItemProps) {
