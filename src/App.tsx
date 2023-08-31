@@ -12,6 +12,10 @@ import Auth0ProviderLayout from './layouts/Auth0ProviderLayout';
 import Profile from './pages/Profile';
 import AuthenticationGuard from './components/AuthenticationGuard';
 import Error from './pages/Error';
+import Settings from './pages/Settings';
+import Explore from './pages/Explore';
+import Trending from './pages/Trending';
+import Favorites from './pages/Favorites';
 
 function App() {
   const queryClient = new QueryClient({
@@ -25,18 +29,16 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Auth0ProviderLayout />}>
-        {/* <Route index element={<h1>Check for login</h1>} /> */}
         <Route path="*" element={<Error />} />
         <Route element={<FeedLayout />}>
           <Route index element={<Feed />} />
         </Route>
         <Route path="/form" element={<Form />} />
-        {/* <Route path="/callback" element={<FeedLayout />}>
-          <Route element={<CallbackPage />} />
-        </Route> */}
         <Route path="/profile" element={<AuthenticationGuard component={Profile} />} />
-        {/* <Route path="/protected" element={<ProtectedPage />} /> */}
-        {/* <Route path="/admin" element={<AdminPage />} /> */}
+        <Route path="/settings" element={<AuthenticationGuard component={Settings} />} />
+        <Route path="/explore" element={<AuthenticationGuard component={Explore} />} />
+        <Route path="/trending" element={<AuthenticationGuard component={Trending} />} />
+        <Route path="/favorites" element={<AuthenticationGuard component={Favorites} />} />
       </Route>
     )
   );
