@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   Avatar,
   Box,
@@ -11,6 +12,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Center,
 } from '@chakra-ui/react';
 import { FiChevronDown } from 'react-icons/fi';
 
@@ -18,23 +20,30 @@ function NavLink(props: any) {
   const { children } = props;
 
   return (
-    <Box
+    <Center
       as="a"
-      px={2}
-      py={1}
-      rounded={'md'}
       _hover={{
         textDecoration: 'none',
         bg: useColorModeValue('gray.200', 'gray.700'),
       }}
-      href={'#'}
+      href={props.link}
     >
       {children}
-    </Box>
+    </Center>
   );
 }
 
 export default function AvatarButton() {
+    const { logout } = useAuth0();
+
+    const handleLogout = () => {
+      logout({
+        logoutParams: {
+          returnTo: window.location.origin,
+        },
+      });
+    };
+
   return (
     <Flex alignItems={'center'}>
       <Menu>
@@ -63,11 +72,10 @@ export default function AvatarButton() {
           bg={useColorModeValue('white', 'gray.900')}
           borderColor={useColorModeValue('gray.200', 'gray.700')}
         >
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Settings</MenuItem>
-          <MenuItem>Billing</MenuItem>
+          <NavLink link='/profile'><MenuItem>Profile</MenuItem></NavLink>
+          <NavLink link='/settings'><MenuItem>Settings</MenuItem></NavLink>
           <MenuDivider />
-          <MenuItem>Sign out</MenuItem>
+          <MenuItem onClick={handleLogout}>Sign out</MenuItem>
         </MenuList>
       </Menu>
     </Flex>
