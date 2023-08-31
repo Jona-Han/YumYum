@@ -1,21 +1,12 @@
-import {
-  Box,
-  Flex,
-  Button,
-  useColorModeValue,
-  Stack,
-  useColorMode,
-} from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { Box, Flex, useColorModeValue, Stack } from '@chakra-ui/react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import LoginButton from './buttons/LoginButton';
 import SignupButton from './buttons/SignupButton';
-import LogoutButton from './buttons/LogoutButton';
 import AvatarButton from './buttons/AvatarButton';
+import NotificationButton from './buttons/NotificationButton';
 
 export default function Header() {
-  const { colorMode, toggleColorMode } = useColorMode();
   const { isAuthenticated } = useAuth0();
 
   return (
@@ -28,10 +19,6 @@ export default function Header() {
         <Flex h={16} alignItems={'center'} justifyContent={'flex-end'}>
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={5}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-              </Button>
-
               {!isAuthenticated && (
                 <>
                   <SignupButton />
@@ -40,7 +27,7 @@ export default function Header() {
               )}
               {isAuthenticated && (
                 <>
-                  <LogoutButton />
+                  <NotificationButton />
                   <AvatarButton />
                 </>
               )}
