@@ -34,15 +34,15 @@ function NavLink(props: any) {
 }
 
 export default function AvatarButton() {
-    const { logout } = useAuth0();
+  const { logout } = useAuth0();
 
-    const handleLogout = () => {
-      logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        },
-      });
-    };
+  const handleLogout = () => {
+    logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
+  };
 
   return (
     <Flex alignItems={'center'}>
@@ -72,8 +72,12 @@ export default function AvatarButton() {
           bg={useColorModeValue('white', 'gray.900')}
           borderColor={useColorModeValue('gray.200', 'gray.700')}
         >
-          <NavLink link='/profile'><MenuItem>Profile</MenuItem></NavLink>
-          <NavLink link='/settings'><MenuItem>Settings</MenuItem></NavLink>
+          <NavLink link="/profile">
+            <MenuItem>Profile</MenuItem>
+          </NavLink>
+          <NavLink link="/settings">
+            <MenuItem>Settings</MenuItem>
+          </NavLink>
           <MenuDivider />
           <MenuItem onClick={handleLogout}>Sign out</MenuItem>
         </MenuList>
