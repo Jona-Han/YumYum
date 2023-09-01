@@ -15,7 +15,7 @@ app.use(cors());
 
 app.use('/user', userRouter);
 app.use('/post', postRouter);
-app.use('/postLogin', postLoginRouter)
+app.use('/postLogin', postLoginRouter);
 
 app.use(errorHandler);
 app.use(notFoundHandler);
