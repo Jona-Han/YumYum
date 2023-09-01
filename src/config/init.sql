@@ -207,9 +207,9 @@ INSERT INTO POSTS (content, category, user_ID) VALUES ('Loving this new spaghett
 INSERT INTO POSTS (content, category, user_ID) VALUES ('The best type of way to cook potatoes is definitely fries', 1, '4');
 INSERT INTO POSTS (content, category, user_ID) VALUES ('Eat healthy with this new salmon recipe', 1, '5');
 
+INSERT INTO MEDIA_IN_POSTS (post_ID) VALUES (1);
 INSERT INTO MEDIA_IN_POSTS (post_ID) VALUES (2);
 INSERT INTO MEDIA_IN_POSTS (post_ID) VALUES (3);
-INSERT INTO MEDIA_IN_POSTS (post_ID) VALUES (1);
 INSERT INTO MEDIA_IN_POSTS (post_ID) VALUES (4);
 INSERT INTO MEDIA_IN_POSTS (post_ID) VALUES (5);
 
