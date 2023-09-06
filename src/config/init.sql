@@ -176,12 +176,12 @@ EXECUTE FUNCTION update_reviews_and_rating();
 
 
 -- Insert Statements
-INSERT INTO USERS (id, given_name, family_name, email) VALUES ('1', 'Cloud', 'Strife', 'cstrife@gmail.com');
-INSERT INTO USERS (id, given_name, family_name, email) VALUES ('2', 'Tifa', 'Lockhart', 'tlockhart@gmail.com');
-INSERT INTO USERS (id, given_name, family_name, email) VALUES ('3', 'Aerith', 'Gainsborough', 'aerith@gmail.com');
-INSERT INTO USERS (id, given_name, family_name, email) VALUES ('4', 'Barrett', 'Wallace', 'bwallace@gmail.com');
-INSERT INTO USERS (id, given_name, family_name, email) VALUES ('5', 'Yuffie', 'Kisaragi', 'yuffie@gmail.com');
-INSERT INTO USERS (id, given_name, family_name, email) VALUES ('auth0|64e31d02ef2059e5d69f6e23', 'Jonathan', 'Han', 'hanxiaohoo300@gmail.com');
+INSERT INTO USERS (id, given_name, family_name, profile_name, email) VALUES ('1', 'Cloud', 'Strife', 'cloud', 'cstrife@gmail.com');
+INSERT INTO USERS (id, given_name, family_name, profile_name, email) VALUES ('2', 'Tifa', 'Lockhart', 'tiff','tlockhart@gmail.com');
+INSERT INTO USERS (id, given_name, family_name, profile_name, email) VALUES ('3', 'Aerith', 'Gainsborough', 'aer','aerith@gmail.com');
+INSERT INTO USERS (id, given_name, family_name, profile_name, email) VALUES ('4', 'Barrett', 'Wallace', 'bigwallace', 'bwallace@gmail.com');
+INSERT INTO USERS (id, given_name, family_name, profile_name, email) VALUES ('5', 'Yuffie', 'Kisaragi', 'yuffiee','yuffie@gmail.com');
+INSERT INTO USERS (id, given_name, family_name, profile_name, email) VALUES ('auth0|64e31d02ef2059e5d69f6e23', 'Jonathan', 'Han', 'secretAZNman','hanxiaohoo300@gmail.com');
 
 INSERT INTO RECIPES (name, prep_Time, cook_Time, servings, calories, fat, protein, carb)
 VALUES ('Hamburger',15, 15, 2, 800, 20, 20, 60);

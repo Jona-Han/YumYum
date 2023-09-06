@@ -24,7 +24,7 @@ postRouter.get(
   async (req: express.Request, res: express.Response) => {
     try {
       const userId = getIDFromToken(req);
-      const posts = await postService.(userId);
+      const posts = await postService.getUserPosts(userId);
       res.json(posts);
     } catch (error: any) {
       res.status(500).send(error.message);
