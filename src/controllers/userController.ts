@@ -19,6 +19,20 @@ userRouter.get('/', validateAccessToken, async (req: express.Request, res: expre
   }
 });
 
+userRouter.get('/:id', async (req: express.Request, res: express.Response) => {
+  try {
+    const user = await userService.getUserById(req.params.id);
+
+    res;
+  } catch (error: any) {
+    if (error.message === 'User not found') {
+      res.status(404).send(error.message);
+    } else {
+      res.status(500).send(error.message);
+    }
+  }
+});
+
 userRouter.post('/', async (req: express.Request, res: express.Response) => {
   try {
     const userID = getIDFromToken(req);
