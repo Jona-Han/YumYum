@@ -11,11 +11,11 @@ export default function Profile() {
     return async () => {
       const accessToken = await getAccessTokenSilently();
       const response = await getUser(accessToken);
-  
+
       if (!response.data) {
         throw new Error(response.error?.message);
       }
-  
+
       return response.data;
     };
   }

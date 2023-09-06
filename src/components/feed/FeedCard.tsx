@@ -12,8 +12,9 @@ import {
   AspectRatio,
 } from '@chakra-ui/react';
 import LikeButton from '../buttons/LikeButton';
+import UserPost from '../../types/UserPost';
 
-export default function FeedCard() {
+export default function FeedCard({ post, mediaID, user }: UserPost) {
   return (
     <Center py={6}>
       <Box
@@ -26,32 +27,25 @@ export default function FeedCard() {
         overflow={'hidden'}
       >
         <Stack direction={'row'} ml={1} mb={3} spacing={4} align={'center'}>
-          <Avatar src={'https://avatars0.githubusercontent.com/u/1164541?v=4'} />
+          <Avatar src={`../../assets/profile/${user.id}`} />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>Achim Rolle</Text>
-            <Text color={'gray.500'}>Feb 08, 2021</Text>
+            <Text fontWeight={600}>{`${user.name}`}</Text>
+            <Text color={'gray.500'}>{`${post.dateCreated}`}</Text>
           </Stack>
         </Stack>
 
         <AspectRatio maxW={'500px'} ratio={4 / 3} bg={'gray.100'} mx={-4} mb={4}>
-          <Image
-            src={
-              '../../public/1.png'
-            }
-            alt="Example"
-          />
+          <Image src={`../assets/${mediaID}`} />
         </AspectRatio>
         <Stack>
-          <Heading
+          {/* <Heading
             color={useColorModeValue('gray.700', 'white')}
             fontSize={'2xl'}
             fontFamily={'body'}
           >
-            Placeholder Title
-          </Heading>
-          <Text color={'gray.500'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          </Text>
+            {`${}`}
+          </Heading> */}
+          <Text color={'gray.500'}>{`${post.content}`}</Text>
         </Stack>
 
         <HStack mt={3} display="flex" justifyContent="space-evenly">
