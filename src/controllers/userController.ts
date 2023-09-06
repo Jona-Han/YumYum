@@ -21,9 +21,8 @@ userRouter.get('/', validateAccessToken, async (req: express.Request, res: expre
 
 userRouter.get('/:id', async (req: express.Request, res: express.Response) => {
   try {
-    const user = await userService.getUserById(req.params.id);
-
-    res;
+    const publicProfile = await userService.getPublicProfileById(req.params.id);
+    res.status(200).json(publicProfile);
   } catch (error: any) {
     if (error.message === 'User not found') {
       res.status(404).send(error.message);
