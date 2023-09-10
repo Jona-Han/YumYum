@@ -20,20 +20,16 @@ export async function getThreeRandomPosts(accessToken: string) {
   };
 }
 
-export async function getUserData(userID: string, accessToken: string) {
-    const config = {
-        url: `${apiServerUrl}/user/:userID`,
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-      };
-    
-      const response = await callExternalApi({ config });
-    
-      return {
-        data: response.data || null,
-        error: response.error,
-      };    
+export async function getPublicProfile(userID: string) {
+  const config = {
+    url: `${apiServerUrl}/user/${userID}`,
+    method: 'GET',
+  };
+
+  const response = await callExternalApi({ config });
+
+  return {
+    data: response.data || null,
+    error: response.error,
+  };
 }

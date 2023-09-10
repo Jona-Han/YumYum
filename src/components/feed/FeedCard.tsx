@@ -14,7 +14,7 @@ import {
 import LikeButton from '../buttons/LikeButton';
 import UserPost from '../../types/UserPost';
 
-export default function FeedCard({ post, mediaID, user }: UserPost) {
+export default function FeedCard({ post, mediaID, poster }: UserPost) {
   return (
     <Center py={6}>
       <Box
@@ -27,9 +27,9 @@ export default function FeedCard({ post, mediaID, user }: UserPost) {
         overflow={'hidden'}
       >
         <Stack direction={'row'} ml={1} mb={3} spacing={4} align={'center'}>
-          <Avatar src={`../../assets/profile/${user.id}`} />
+          <Avatar src={`../../assets/profile/${poster.id}`} />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>{`${user.name}`}</Text>
+            <Text fontWeight={600}>{`${poster.name}`}</Text>
             <Text color={'gray.500'}>{`${post.dateCreated}`}</Text>
           </Stack>
         </Stack>

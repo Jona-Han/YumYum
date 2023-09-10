@@ -2,47 +2,39 @@ import { useQuery, useQueries } from 'react-query';
 import { Center, CircularProgress, Flex } from '@chakra-ui/react';
 import FeedCard from './FeedCard';
 import { useAuth0 } from '@auth0/auth0-react';
-import getThreeRandomPosts from '../../services/feedService';
+import { getThreeRandomPosts, getPublicProfile } from '../../services/feedService';
 import UserPost from '../../types/UserPost';
 
 export default function Feed() {
   const { getAccessTokenSilently } = useAuth0();
-  const {
-    data: postData,
-    error: postError,
-    isLoading: postLoading,
-  } = useQuery(['randomPosts'], fetchPostData(getAccessTokenSilently));
-  const {
-    data: userData,
-    error: userError,
-    isLoading: userLoading,
-  } = useQueries({
-    queries: postData.map((post) => {
-      return {
-        queryKey: ['userData', post.id],
-        queryFn: fetchUserDataFromPost(post.user_ID, getAccessTokenSilently),
-        enabled: postData && Object.keys(postData).length > 0,
-      };
-    }),
-  });
+  const { data: postData, isLoading: postLoading } = useQuery(['randomPosts'], () =>
+    fetchPostData(getAccessTokenSilently)
+  );
 
-  function fetchPostData(getAccessTokenSilently: any) {
-    return async () => {
-      const accessToken = await getAccessTokenSilently();
-      const response = await getThreeRandomPosts(accessToken);
+  const userData = useQueries(
+    postData?.map((post) => ({
+      queryKey: ['user', post.id],
+      queryFn: () => fetchUserData(post.user_id),
+      enabled: !postLoading && postData && postData.length > 0,
+    })) || []
+  );
 
-      if (!response.data) {
-        throw new Error(response.error?.message);
-      }
-      return response.data;
-    };
+  async function fetchPostData(getAccessTokenSilently: any) {
+    const accessToken = await getAccessTokenSilently();
+    const response = await getThreeRandomPosts(accessToken);
+
+    if (!response.data) {
+      throw new Error(response.error?.message);
+    }
+    return response.data;
   }
 
-  function fetchUserDataFromPost(postID: string, getAccessTokenSilently: any) {
-    return async () => {
-        const accessToken = await getAccessTokenSilently();
-        const response = await 
-    };
+  async function fetchUserData(userID: string) {
+    const response = await getPublicProfile(userID);
+    if (!response.data) {
+      throw new Error(response.error?.message);
+    }
+    return response.data;
   }
 
   if (postLoading) {
@@ -53,10 +45,29 @@ export default function Feed() {
     );
   }
 
+  //Create UserPosts objects to map through to create feedCard
+  let cardData: UserPost[] = [];
+  for (let i = 0; i < 3; i++) {
+    cardData.push({
+      post: {
+        content: postData[i].content,
+        dateCreated: postData[i].date_created,
+        numOfReactions: postData[i].num_of_reactions,
+      },
+      mediaID: 1,
+      poster: {
+        name: userData[i].data?.profile_name,
+        id: postData[i].user_id,
+      },
+    });
+  }
+
   return (
     <>
       <Flex alignItems="center" flexDirection="column" gap="10px">
-        <FeedCard />
+        {cardData.map((card) => {
+          return <FeedCard key={card.mediaID} {...card} />;
+        })}
       </Flex>
     </>
   );
