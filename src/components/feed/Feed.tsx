@@ -12,7 +12,7 @@ export default function Feed() {
   );
 
   const userData = useQueries(
-    postData?.map((post) => ({
+    postData?.map((post: { id: any; user_id: string; }) => ({
       queryKey: ['user', post.id],
       queryFn: () => fetchUserData(post.user_id),
       enabled: !postLoading && postData && postData.length > 0,
@@ -46,7 +46,7 @@ export default function Feed() {
   }
 
   //Create UserPosts objects to map through to create feedCard
-  let cardData: UserPost[] = [];
+  const cardData: UserPost[] = [];
   for (let i = 0; i < 3; i++) {
     cardData.push({
       post: {
