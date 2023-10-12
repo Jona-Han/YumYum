@@ -2,13 +2,20 @@
 
 ## WIP
 
+## COMPLETE:
+- AuthO integration
+- Multiple login methods
+- Create account/Sign in
+- View random posts
+- View recipes
+
 ## TODO:
 
 Content recommendation system
 
-Create/Delete/View Posts
+Create/Delete Posts
 
-Create/Delete/View Recipes
+Create/Delete Recipes
 
 Profile editor
 
